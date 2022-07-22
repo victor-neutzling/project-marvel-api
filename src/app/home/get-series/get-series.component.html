@@ -1,0 +1,35 @@
+<form (ngSubmit)="getHeroes()">
+  <input class="search-bar" type="text"  [formControl]="charName" placeholder="Name of Series">
+  <input class="submit-button" type="submit" value="search">
+</form>
+<div class="pg-index" *ngIf=" heroes ">
+  <p>showing: {{pageOffset}} - {{pageOffset+20}} </p>
+</div>
+<div class="pg-btns" *ngIf=" heroes ">
+  <button (click)="previousPage()">previous</button>
+  <button (click)="nextPage()">next</button>
+</div>
+<div class="card-container" *ngIf=" heroes ;else results">
+  <div class="cards" *ngFor="let hero of heroes">
+    <app-card
+    [name]="hero.title"
+    [src]="hero['thumbnail'].path + '/landscape_medium.'+hero['thumbnail'].extension"
+    [description]="hero.description"
+    [id]="'id: '+hero.id"
+    ></app-card>
+  </div>
+</div>
+<div class="pg-btns" *ngIf=" heroes.length>8 ">
+  <button (click)="previousPage()">previous</button>
+  <button (click)="nextPage()">next</button>
+</div>
+<div class="pg-index" *ngIf="heroes.length>8">
+  <p>showing: {{pageOffset}} - {{pageOffset+20}} </p>
+  <div class="margin"></div>
+</div>
+
+<ng-template #results>
+  <div class="err">
+    <p class="err-txt">results here!!</p>
+  </div>
+</ng-template>

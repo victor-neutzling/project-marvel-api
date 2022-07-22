@@ -1,0 +1,26 @@
+.btns{
+  display: flex;
+  justify-content: center;
+
+  a{
+    text-decoration: none !important;
+  }
+  div{
+    margin: 4px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 8px;
+    border-width: 2px;
+    &:active{
+      border-color: blue;
+    }
+    p{
+      color: black;
+    }
+  }
+}
